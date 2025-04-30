@@ -13,12 +13,35 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+}
+.secadd{
+display: inline-block;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
 
 }
 .espacar{
   
 margin: 10px;
 }
+.add{
+  background-color: white;
+  border-radius: 4px;
+  width: 15rem;
+  
+  text-align: center;
+  color: #242424;
+}
+.butonadd{
+  margin: 3px 0px 20px;
+  background-color: rgb(139, 129, 129);
+  border-radius: 4px;
+  display: inline-block;
+  color: #242424;
+  margin: 0px 0px 15px 2px;
+}
+
 span{ font-size: 18px;}
 
 
