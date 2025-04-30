@@ -14,6 +14,12 @@ if(!input){
   return
 }
 setTasks(tarefas => [...tarefas,input])
+setInput("")
+  }
+
+  function handleDelete(itemdel:string){
+const removetarefa = tasks.filter(task => task !== itemdel)
+setTasks(removetarefa)
   }
 
   return (
@@ -31,8 +37,9 @@ onChange={(e) => setInput(e.target.value)}/>
 </section>
 
  { tasks.map( (item,index)=> (
-<section key={item}>
+<section className='secdelete' key={item}>
   <span >{item}</span>
+  <button onClick={()=> handleDelete(item)}>Excluir</button>
 </section>
  ))}
       </div>

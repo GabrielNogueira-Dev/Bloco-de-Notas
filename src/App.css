@@ -39,7 +39,21 @@ margin: 10px;
   border-radius: 4px;
   display: inline-block;
   color: #242424;
-  margin: 0px 0px 15px 2px;
+  margin: 0px 0px 15px 3px;
+  border:none;
+  cursor: pointer;
+}
+.secdelete{
+ margin-bottom: 5px;
+}
+.secdelete  button{
+  margin-left: 6px;
+  border-radius: 2px;
+  font-size: 12px;
+  background-color: rgb(139, 129, 129);
+  color: #242424;
+  border:none;
+  cursor: pointer;
 }
 
 span{ font-size: 18px;}
