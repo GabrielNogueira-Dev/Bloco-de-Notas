@@ -7,20 +7,52 @@ function App() {
     'Comprar pao meio dia',
     'Estudar ingles a noite'
   ])
-
+  const [editTask,setEditTask] = useState({
+    enable:false,
+    tasks: ''
+  })
+//primeiro botao = adicionar
   function handleRegistrar(){
 if(!input){
   alert("adicione alguma tarefa")
   return
+}if(editTask.enable){
+  handleSaveEdite();
+  return
 }
+
 setTasks(tarefas => [...tarefas,input])
 setInput("")
   }
-
+//segundo botao = deletar
   function handleDelete(itemdel:string){
 const removetarefa = tasks.filter(task => task !== itemdel)
 setTasks(removetarefa)
   }
+
+  //terceiro botao = editar
+function handleEdite(itemedit:string){
+setInput(itemedit)
+setEditTask({
+  enable:true,
+  tasks:itemedit
+})
+}
+//quarta ainda do botao edite.feito para salvar e editar e nao adicionar novamente. 
+function handleSaveEdite(){
+/*preciso achar posicao*/
+
+const findIndexTask = tasks.findIndex( task => task === editTask.tasks)
+const allTasks = [...tasks]
+
+allTasks[findIndexTask] = input
+setTasks(allTasks)
+
+setEditTask({
+  enable:false,
+tasks:''})
+setInput("")
+}
 
   return (
 
@@ -33,12 +65,13 @@ setTasks(removetarefa)
 value={input}
 onChange={(e) => setInput(e.target.value)}/>
 
-<button className='butonadd' onClick={handleRegistrar}>Adicionar Tarefa</button>
+<button className='butonadd' onClick={handleRegistrar}>{editTask.enable ? "Atualizar tarefa" : "Adicionar tarefa"}</button>
 </section>
 
  { tasks.map( (item,index)=> (
 <section className='secdelete' key={item}>
   <span >{item}</span>
+  <button onClick={()=> handleEdite(item)}>Editar</button>
   <button onClick={()=> handleDelete(item)}>Excluir</button>
 </section>
  ))}
