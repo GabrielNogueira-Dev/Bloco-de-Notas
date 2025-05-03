@@ -2,10 +2,24 @@
   box-sizing: border-box;
   margin: 0;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #8b6730;
+ 
 }
-.hr{width: 100vh;}
+.hr{width: 70vw;}
+.check{
+  
+  margin-right: 10px;
+  outline: none;
+  cursor: pointer
+}
+input[type='checkbox'] {
+  accent-color:green;
+}
+.hr :hover{
+background-color: green;
+}
 .container {
+  
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
