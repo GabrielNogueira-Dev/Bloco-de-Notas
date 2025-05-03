@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import './App.css'
 
 function App() {
+  
   const [input,setInput] = useState("")
   const [tasks,setTasks] = useState(['Estudar react',
     'Comprar pao meio dia',
@@ -11,6 +12,14 @@ function App() {
     enable:false,
     tasks: ''
   })
+  
+useEffect(()=>{
+ const salvarNoLocal = localStorage.getItem("@nota")
+if(salvarNoLocal){
+ setTasks(JSON.parse(salvarNoLocal))
+}
+},[])
+
 //primeiro botao = adicionar
   function handleRegistrar(){
 if(!input){
@@ -20,14 +29,16 @@ if(!input){
   handleSaveEdite();
   return
 }
-
+localStorage.setItem("@nota",JSON.stringify([...tasks,input]))
 setTasks(tarefas => [...tarefas,input])
 setInput("")
+
   }
 //segundo botao = deletar
   function handleDelete(itemdel:string){
 const removetarefa = tasks.filter(task => task !== itemdel)
 setTasks(removetarefa)
+localStorage.setItem("@nota",JSON.stringify(removetarefa))
   }
 
   //terceiro botao = editar
@@ -37,6 +48,7 @@ setEditTask({
   enable:true,
   tasks:itemedit
 })
+
 }
 //quarta ainda do botao edite.feito para salvar e editar e nao adicionar novamente. 
 function handleSaveEdite(){
@@ -52,6 +64,7 @@ setEditTask({
   enable:false,
 tasks:''})
 setInput("")
+localStorage.setItem("@nota",JSON.stringify(allTasks))
 }
 
   return (
